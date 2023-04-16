@@ -1,9 +1,8 @@
 import React from 'react'
 import {StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 
-export default function TodoItem({ pressHandler, toImage }) {
+export default function TodoImage({ pressHandler, toImage }) {
 
-  
   return (
     <TouchableOpacity onPress={() => pressHandler(toImage.key)}>
        {(()=>  {

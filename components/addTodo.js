@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 
-export default function AddTodo({ submitHandler }) {
-  [text, setText] = useState('');
-
- 
-
+export default function AddTodo({text, submitHandler }) {
+  
   const pressHandler = () => {
-    submitHandler(text);
-    setText('');
+    submitHandler();
   }
 
   return (
     <View>
-      <Button color='coral' onPress={pressHandler} title='add todo' />
-    
-    <Button color='coral' onPress={pressHandler} title='add todo 10 times' />
+      {(()=>  {
+          if(text == '1') {
+            return(
+              <Button color='coral' onPress={pressHandler} title='add todo' />
+            )
+          }
+          return <Button color='coral' onPress={pressHandler} title='add todo 10 times' />
+      })()}
+      
   </View>
   );
 }

@@ -7,67 +7,72 @@
 
 import React, { useState } from 'react';
 import {
-  ScrollView,
   Button,
-  TouchableOpacity,
   StyleSheet,
   Text,
   View,
   Image,
-  FlatList, Alert, TouchableWithoutFeedback, Keyboard
+  FlatList,
 } from 'react-native';
-
-
-
-
-  //  {}
-  // [ ]
-  import Header from './components/header';
-import TodoItem from './components/todoItem';
+import Header from './components/header';
+import TodoImage from './components/todoImage';
 import AddTodo from './components/addTodo';
-
+  //  {}    {/* */}
+  // [ ]
 export default function App() {
-  const [addImage, setTodos] = useState([
-    { text: 'one star', key: '1' },
-    { text: 'two star', key: '2' },
-    { text: 'three star', key: '3' },
-    { text: 'four star', key: '4' },
+  //declare a new state variable, which we call Image
+  const [Image, setImage] = useState([
+    {  key: '1' },
+    {  key: '2' },
+    {  key: '3' },
+    {  key: '4' },
   ]);
 
+  //delete function
   const pressHandler = (key:string) => {
-    setTodos(prevTodos => {
-      return prevTodos.filter(todo => todo.key != key);
+    setImage(prevImage => {
+      return prevImage.filter(image => image.key != key);
     });
   };
 
-  const submitHandler = (text:string) => {
-    
-      setTodos(prevTodos => {
+  //add image function
+  const submitHandler = () => {
+    //use the setImage from useState to add new image.
+    setImage(prevImage => {
         return [
-          { text, key: Math.random().toString() },
-          ...prevTodos
+          {  key: Math.random().toString() },
+          ...prevImage
         ];
       });
-    
   };
 
+  //add image 10 times  different image
+  const submitHandler10 = () => {
+    //use the setImage from state to add new image.
+    for(let i =0; i< 10;i++) {
+      submitHandler();
+    }
+  };
+  // main screen code
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
-        <Header />
+         {/* header from header.js*/}
+        <Header/> 
         <View style={styles.content}>
-          <AddTodo submitHandler={submitHandler} />
-          <View style={styles.list}>
+          {/* AddTodo from addTodo.js , it is about button */}
+          <AddTodo text='1' submitHandler={submitHandler} />
+          <AddTodo text='10' submitHandler={submitHandler10} />
+          <View style={styles.list}> 
             <FlatList
-              data={addImage}
-              renderItem={({ item }) => (
-                <TodoItem toImage={item} pressHandler={pressHandler} />
+              data={Image}  //use the Image group (useState)
+              renderItem={({ item }) => ( 
+                // TodoImage from todoImage.js , it is about 
+                <TodoImage toImage={item} pressHandler={pressHandler} />
               )}
             />
           </View>
         </View>
       </View>
-    </TouchableWithoutFeedback>
   );
 }
 
@@ -77,9 +82,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   content: {
+    flex: 1,
     padding: 40,
   },
   list: {
+    flex: 1,
     marginTop: 20,
   },
 });
