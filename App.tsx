@@ -6,19 +6,11 @@
  */
 
 import React, { useState } from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  FlatList,
-} from 'react-native';
+import {Button,StyleSheet,Text,View,Image,FlatList,} from 'react-native';
 import Header from './components/header';
 import TodoImage from './components/todoImage';
 import AddTodo from './components/addTodo';
-  //  {}    {/* */}
-  // [ ]
+
 export default function App() {
   //declare a new state variable, which we call Image
   const [Image, setImage] = useState([
@@ -47,9 +39,15 @@ export default function App() {
   };
 
   //add image 10 times  different image
-  const submitHandler10 = () => {
+  const submitHandler100 = () => {
     //use the setImage from state to add new image.
-    for(let i =0; i< 10;i++) {
+    for(let i =0; i< 100;i++) {
+      submitHandler();
+    }
+  };
+  const submitHandler500 = () => {
+    //use the setImage from state to add new image.
+    for(let i =0; i< 500;i++) {
       submitHandler();
     }
   };
@@ -61,12 +59,13 @@ export default function App() {
         <View style={styles.content}>
           {/* AddTodo from addTodo.js , it is about button */}
           <AddTodo text='1' submitHandler={submitHandler} />
-          <AddTodo text='10' submitHandler={submitHandler10} />
+          <AddTodo text='100' submitHandler={submitHandler100} />
+          <AddTodo text='500' submitHandler={submitHandler500} />
           <View style={styles.list}> 
             <FlatList
               data={Image}  //use the Image group (useState)
               renderItem={({ item }) => ( 
-                // TodoImage from todoImage.js , it is about 
+                // TodoImage from todoImage.js , it is about button function
                 <TodoImage toImage={item} pressHandler={pressHandler} />
               )}
             />
@@ -91,5 +90,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
+  //  {}    {/* */}
+  // [ ]
 

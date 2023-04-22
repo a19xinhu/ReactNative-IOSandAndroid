@@ -12,9 +12,16 @@ export default function AddTodo({text, submitHandler }) {
       {(()=>  {
           if(text == '1') {
             return(
+              //button add once
               <Button color='coral' onPress={pressHandler} title='add todo' />
             )
+          }else if(text == '500') {
+            return(
+              //button add 500
+              <Button color='coral' onPress={pressHandler} title='add todo 500' />
+            )
           }
+             //button add 10 times
           return <Button color='coral' onPress={pressHandler} title='add todo 10 times' />
       })()}
       
