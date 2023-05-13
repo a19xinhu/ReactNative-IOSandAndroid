@@ -63,7 +63,6 @@ export default function App() {
           <AddTodo text='500' submitHandler={submitHandler500} />
           <View style={styles.list}> 
             <FlatList
-              numColumns={3}
               data={Image}  //use the Image group (useState)
               renderItem={({ item }) => ( 
                 // TodoImage from todoImage.js , it is about button function
