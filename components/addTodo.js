@@ -21,8 +21,8 @@ export default function AddTodo({text, submitHandler }) {
               <Button color='coral' onPress={pressHandler} title='add todo 500' />
             )
           }
-             //button add 10 times
-          return <Button color='coral' onPress={pressHandler} title='add todo 10 times' />
+             //button add 100 times
+          return <Button color='coral' onPress={pressHandler} title='add todo 100 times' />
       })()}
       
   </View>

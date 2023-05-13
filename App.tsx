@@ -29,16 +29,19 @@ export default function App() {
 
   //add image function
   const submitHandler = () => {
-    //use the setImage from useState to add new image.
-    setImage(prevImage => {
+    for(let i =0; i< 3;i++) {
+      //use the setImage from useState to add new image.
+      setImage(prevImage => {
         return [
           {  key: Math.random().toString() },
           ...prevImage
         ];
-      });
+      });   
+   }
+    
   };
 
-  //add image 10 times  different image
+  //add image 100 times  different image
   const submitHandler100 = () => {
     //use the setImage from state to add new image.
     for(let i =0; i< 100;i++) {
@@ -63,6 +66,7 @@ export default function App() {
           <AddTodo text='500' submitHandler={submitHandler500} />
           <View style={styles.list}> 
             <FlatList
+              numColumns={3}
               data={Image}  //use the Image group (useState)
               renderItem={({ item }) => ( 
                 // TodoImage from todoImage.js , it is about button function

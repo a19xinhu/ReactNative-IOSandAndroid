@@ -23,7 +23,7 @@ export default function TodoImage({ pressHandler, toImage }) {
               <Image source={require('../assets/rating-4.png')}/>
             )
           }
-          return <Image source={require('../assets/rating-5.png')}/>
+          return <Image source={require('../assets/Brating-5.png')}/>
       })()}
        
     </TouchableOpacity>
