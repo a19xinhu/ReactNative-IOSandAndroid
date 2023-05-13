@@ -29,7 +29,6 @@ export default function App() {
 
   //add image function
   const submitHandler = () => {
-    for(let i =0; i< 3;i++) {
       //use the setImage from useState to add new image.
       setImage(prevImage => {
         return [
@@ -37,8 +36,6 @@ export default function App() {
           ...prevImage
         ];
       });   
-     }
-    
   };
 
   //add image 100 times  different image
